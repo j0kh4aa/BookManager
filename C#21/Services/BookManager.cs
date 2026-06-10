@@ -49,9 +49,7 @@ public class BookManagerService : IBookRepository
     {
         return _books.FirstOrDefault(b => b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
     }
-    /// <summary>
-    /// Seeds the collection with 20 sample books for demonstration.
-    /// </summary>
+ 
     public void SeedData()
     {
         var books = new List<Book>
