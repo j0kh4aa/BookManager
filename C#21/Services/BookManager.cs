@@ -52,7 +52,7 @@ public class BookManagerService : IBookRepository
     /// <summary>
     /// Seeds the collection with 20 sample books for demonstration.
     /// </summary>
-    /// 
+    
     public void SeedData()
     {
         var books = new List<Book>
