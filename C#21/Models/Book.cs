@@ -22,6 +22,8 @@ public class Book
     /// <summary>
     /// Returns a formatted string with full book details.
     /// </summary>
+    /// 
+
     public virtual string GetDetails()
     {
         return $"Title: {Title} | Author: {Author} | Year: {Year} | Pages: {Pages} | Price: ${Price:F2}";
