@@ -22,7 +22,7 @@ public class Book
     /// <summary>
     /// Returns a formatted string with full book details.
     /// </summary>
-    /// 
+    
 
     public virtual string GetDetails()
     {
