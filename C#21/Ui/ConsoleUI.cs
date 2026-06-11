@@ -64,6 +64,9 @@ public class ConsoleUI
         int year = PromptInt("  Year         : ", 1000, DateTime.Now.Year);
         int pages = PromptInt("  Pages        : ", 1, 99999);
         double price = PromptDouble("  Price ($)    : ", 0, 9999);
+        string cigar = ("");
+
+
 
         Console.Write("  E-Book? (y/n): ");
         string isEbook = Console.ReadLine()?.Trim().ToLower() ?? "n";
@@ -71,11 +74,11 @@ public class ConsoleUI
         if (isEbook == "y")
         {
             string url = PromptNonEmpty("  Download URL : ");
-            _repository.AddBook(new EBook(title, author, year, pages, price, url));
+            _repository.AddBook(new EBook(title, author, year, pages, price, url, cigar));
         }
         else
         {
-            _repository.AddBook(new Book(title, author, year, pages, price));
+            _repository.AddBook(new Book(title, author, year, pages, price,cigar));
         }
 
         Console.WriteLine("\n  [✓] Book added! Press any key to return...");
@@ -148,7 +151,7 @@ public class ConsoleUI
             Console.WriteLine($"  Author  : {book.Author}");
             Console.WriteLine($"  Year    : {book.Year}");
             Console.WriteLine($"  Pages   : {book.Pages}");
-            Console.WriteLine($"  Price   : ${book.Price:F2}");
+            Console.WriteLine($"  Price   : ${book.Price:F2} ");
             if (book is EBook eb)
                 Console.WriteLine($"  URL     : {eb.DownloadUrl}");
         }
@@ -176,7 +179,7 @@ public class ConsoleUI
     /// <summary>Prints a single book row with index and details.</summary>
     private void PrintBookRow(int index, Book book)
     {
-        Console.WriteLine($"  {index,2}. {book.Title,-35} {book.Author,-20} {book.Year}  {book.Pages}pg  ${book.Price:F2}");
+        Console.WriteLine($"  {index,2}. {book.Title,-35} {book.Author,-20} {book.Year}  {book.Pages}pg  ${book.Price:F2}{book.Cigar}");
     }
 
     // ── Validation helpers ───────────────────────────────────────

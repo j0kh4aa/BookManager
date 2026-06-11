@@ -78,7 +78,7 @@ public class BookManagerService : IBookRepository
         new Book("Continuous Delivery",           "Jez Humble",        2010, 512,  44.99,""),
         new Book("Soft Skills",                   "John Sonmez",       2014, 504,  22.50,""),
          new Book("how i made a billionar dollar bussines with my frineds jz(tuff",
-         "Zura joxiani",       2026, 100000, 1,"packha"),
+         "Zura joxiani",       2026, 100000, 1, "packha parliament night blue"),
          new Book("Belal as champion",           "WelterWeight",        2026, 1,  0,""),
     }; 
 

@@ -29,7 +29,7 @@ public class Book
 
     public virtual string GetDetails()
     {
-        return $"Title: {Title} | Author: {Author} | Year: {Year} | Pages: {Pages} | Price: ${Price:F2}{Cigar}  ";
+        return $"Title: {Title} | Author: {Author} | Year: {Year} | Pages: {Pages} | Price: ${Price:F2} {Cigar}  ";
     }
 
     /// <summary>
