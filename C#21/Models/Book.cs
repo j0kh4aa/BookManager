@@ -9,14 +9,17 @@ public class Book
     public int Pages { get; set; }
     public double Price { get; set; }
 
+    public string Cigar { get; set; }
+
     // Constructor
-    public Book(string title, string author, int year, int pages, double price)
+    public Book(string title, string author, int year, int pages, double price, string cigar)
     {
         Title = title;
         Author = author;
         Year = year;
         Pages = pages;
         Price = price;
+        Cigar = cigar;
     }
 
     /// <summary>
@@ -26,7 +29,7 @@ public class Book
 
     public virtual string GetDetails()
     {
-        return $"Title: {Title} | Author: {Author} | Year: {Year} | Pages: {Pages} | Price: ${Price:F2}";
+        return $"Title: {Title} | Author: {Author} | Year: {Year} | Pages: {Pages} | Price: ${Price:F2}{Cigar}  ";
     }
 
     /// <summary>
