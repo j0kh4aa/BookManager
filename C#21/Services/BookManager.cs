@@ -66,6 +66,7 @@ public class BookManagerService : IBookRepository
         new Book("Structure and Interpretation",  "Harold Abelson",    1996, 657,  55.00),
         new Book("The Art of Computer Programming","Donald Knuth",     1968, 672,  120.00),
         new Book("Working Effectively with Legacy Code","Michael Feathers",2004,456,38.00),
+         new Book("me bebia iliko da ilarioni","nodar dumbadze",2016,232,40.00),
         new EBook("C# in Depth",                 "Jon Skeet",         2019, 528,  29.99, "https://books.example.com/csharp-in-depth"),
         new EBook("Pro ASP.NET Core",            "Adam Freeman",      2022, 1248, 39.99, "https://books.example.com/pro-aspnet"),
         new EBook("JavaScript: The Good Parts",  "Douglas Crockford", 2008, 176,  19.99, "https://books.example.com/js-good-parts"),
@@ -76,6 +77,8 @@ public class BookManagerService : IBookRepository
         new Book("The Clean Coder",               "Robert C. Martin",  2011, 256,  32.00),
         new Book("Continuous Delivery",           "Jez Humble",        2010, 512,  44.99),
         new Book("Soft Skills",                   "John Sonmez",       2014, 504,  22.50),
+         new Book("how i made a billionar dollar bussines with my frineds jz(tuff",
+         "Zura joxiani",       2026, 100000, 10.20),
     };
 
         foreach (var book in books)
