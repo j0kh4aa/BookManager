@@ -16,4 +16,11 @@ public interface IBookRepository
 
     /// <summary>Finds a book by its title (case-insensitive).</summary>
     Book? FindByTitle(string title);
+
+    Book? FindByAuthor(string author);
+
+
+    List<Book> SortByPages();
+
+    List<Book> SortByPrice();
 }

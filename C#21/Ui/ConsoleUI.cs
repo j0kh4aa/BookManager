@@ -28,7 +28,10 @@ public class ConsoleUI
                 case "1": AddBookUI(); break;
                 case "2": ListAllBooksUI(); break;
                 case "3": FindBookUI(); break;
-                case "4": running = false; break;
+                case "4": FindBookByAuthor(); break;
+                case "5": SortBookByPages();break;
+                case "6": SortBookByPrice();break;
+                case "9": running = false; break;
                 default:
                     Console.WriteLine("\n  [!] Invalid choice. Press any key...");
                     Console.ReadKey();
@@ -48,7 +51,10 @@ public class ConsoleUI
         Console.WriteLine("  1.  Add a new book");
         Console.WriteLine("  2.  List all books");
         Console.WriteLine("  3.  Find a book by title");
-        Console.WriteLine("  4.  Exit");
+        Console.WriteLine("  4.  Find a book by author");
+        Console.WriteLine("  5.  sort a books by pages");
+        Console.WriteLine("  6.  sort a books by price");
+        Console.WriteLine("  9.  Exit");
         PrintDivider();
         Console.Write("  Choose: ");
     }
@@ -67,7 +73,7 @@ public class ConsoleUI
         string cigar = ("");
 
 
-
+       
         Console.Write("  E-Book? (y/n): ");
         string isEbook = Console.ReadLine()?.Trim().ToLower() ?? "n";
 
@@ -157,6 +163,95 @@ public class ConsoleUI
         }
 
         Console.WriteLine("\n  Press any key to return...");
+        Console.ReadKey();
+    }
+
+    private void FindBookByAuthor()
+    {
+        Console.Clear();
+        PrintHeader("FIND BOOK BY AUTHOR");
+
+        Console.Write("  Enter Author: ");
+        string author = Console.ReadLine()?.Trim() ?? "";
+
+        Console.Clear();
+        PrintHeader("SEARCH RESULT");
+
+        var book = _repository.FindByAuthor(author);
+
+        if (book == null)
+        {
+            Console.WriteLine($"  [!] No book found with author \"{author}\".");
+        }
+        else
+        {
+            string type = book is EBook ? "💻 E-Book" : "📚 Physical";
+            Console.WriteLine($"  {type}\n");
+            Console.WriteLine($"  Title   : {book.Title}");
+            Console.WriteLine($"  Author  : {book.Author}");
+            Console.WriteLine($"  Year    : {book.Year}");
+            Console.WriteLine($"  Pages   : {book.Pages}");
+            Console.WriteLine($"  Price   : ${book.Price:F2} ");
+            if (book is EBook eb)
+                Console.WriteLine($"  URL     : {eb.DownloadUrl}");
+        }
+
+        Console.WriteLine("\n  Press any key to return...");
+        Console.ReadKey();
+
+    }
+
+    private void SortBookByPages()
+    {
+        Console.Clear();
+        PrintHeader("BOOKS SORTED BY PAGES");
+
+        var books = _repository
+            .GetAllBooks()
+            .OrderBy(b => b.Pages)
+            .ToList();
+
+        if (books.Count == 0)
+        {
+            Console.WriteLine("  No books found.");
+        }
+        else
+        {
+            for (int i = 0; i < books.Count; i++)
+            {
+                Console.WriteLine(
+                    $"{i + 1}. {books[i].Title} - {books[i].Pages} pages");
+            }
+        }
+
+        Console.WriteLine("\nPress any key to return...");
+        Console.ReadKey();
+    }
+
+    private void SortBookByPrice()
+    {
+        Console.Clear();
+        PrintHeader("BOOKS SORTED BY PRICE");
+
+        var books = _repository
+            .GetAllBooks()
+            .OrderBy(b => b.Price)
+            .ToList();
+
+        if (books.Count == 0)
+        {
+            Console.WriteLine("  No books found.");
+        }
+        else
+        {
+            for (int i = 0; i < books.Count; i++)
+            {
+                Console.WriteLine(
+                    $"{i + 1}. {books[i].Title} - {books[i].Price}{books[i].Cigar} price");
+            }
+        }
+
+        Console.WriteLine("\nPress any key to return...");
         Console.ReadKey();
     }
 

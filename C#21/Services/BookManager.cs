@@ -2,6 +2,7 @@
 
 using BookManager.Interfaces;
 using BookManager.Models;
+using System.Linq;
 
 /// <summary>
 /// Manages the book collection. Implements IBookRepository.
@@ -49,6 +50,23 @@ public class BookManagerService : IBookRepository
     {
         return _books.FirstOrDefault(b => b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
     }
+
+    public Book? FindByAuthor(string author)
+    {
+        return _books.FirstOrDefault(a => a.Author.Equals(author, StringComparison.OrdinalIgnoreCase));
+    }
+
+    public List<Book> SortByPages()
+    {
+        return _books.OrderBy(b => b.Pages).ToList();
+    }
+
+    public List<Book> SortByPrice()
+    {
+        return _books.OrderBy(b => b.Price).ToList();
+    }
+
+
     /// <summary>
     /// Seeds the collection with 20 sample books for demonstration.
     /// </summary>
