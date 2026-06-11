@@ -79,6 +79,7 @@ public class BookManagerService : IBookRepository
         new Book("Soft Skills",                   "John Sonmez",       2014, 504,  22.50),
          new Book("how i made a billionar dollar bussines with my frineds jz(tuff",
          "Zura joxiani",       2026, 100000, 10.20),
+         new Book("Belal as champion",           "WelterWeight",        2026, 1,  0),
     };
 
         foreach (var book in books)
