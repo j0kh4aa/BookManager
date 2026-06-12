@@ -23,4 +23,6 @@ public interface IBookRepository
     List<Book> SortByPages();
 
     List<Book> SortByPrice();
+
+    List<Book> SortByYear();
 }

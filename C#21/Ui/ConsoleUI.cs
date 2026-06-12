@@ -31,6 +31,7 @@ public class ConsoleUI
                 case "4": FindBookByAuthor(); break;
                 case "5": SortBookByPages();break;
                 case "6": SortBookByPrice();break;
+                case "7": SortBookByYear();break;
                 case "9": running = false; break;
                 default:
                     Console.WriteLine("\n  [!] Invalid choice. Press any key...");
@@ -52,8 +53,9 @@ public class ConsoleUI
         Console.WriteLine("  2.  List all books");
         Console.WriteLine("  3.  Find a book by title");
         Console.WriteLine("  4.  Find a book by author");
-        Console.WriteLine("  5.  sort a books by pages");
-        Console.WriteLine("  6.  sort a books by price");
+        Console.WriteLine("  5.  sort books by pages");
+        Console.WriteLine("  6.  sort books by price"); 
+        Console.WriteLine("  7.  sort books by Year");
         Console.WriteLine("  9.  Exit");
         PrintDivider();
         Console.Write("  Choose: ");
@@ -255,6 +257,33 @@ public class ConsoleUI
         Console.ReadKey();
     }
 
+
+    private void SortBookByYear()
+    {
+        Console.Clear();
+        PrintHeader("BOOKS SORTED BY YEAR");
+
+        var books = _repository
+            .GetAllBooks()
+            .OrderBy(b => b.Year)
+            .ToList();
+
+        if (books.Count == 0)
+        {
+            Console.WriteLine("  No books found.");
+        }
+        else
+        {
+            for (int i = 0; i < books.Count; i++)
+            {
+                Console.WriteLine(
+                    $"{i + 1}. {books[i].Title} -  realesed in {books[i].Year} ");
+            }
+        }
+
+        Console.WriteLine("\nPress any key to return...");
+        Console.ReadKey();
+    }
     // ── UI Helpers ───────────────────────────────────────────────
 
     /// <summary>Prints a styled header with the given title.</summary>

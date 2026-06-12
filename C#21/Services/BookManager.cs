@@ -66,7 +66,10 @@ public class BookManagerService : IBookRepository
         return _books.OrderBy(b => b.Price).ToList();
     }
 
-
+    public List<Book> SortByYear()
+    {
+        return _books.OrderBy(b => b.Year).ToList();
+    }
     /// <summary>
     /// Seeds the collection with 20 sample books for demonstration.
     /// </summary>
@@ -95,7 +98,7 @@ public class BookManagerService : IBookRepository
         new Book("The Clean Coder",               "Robert C. Martin",  2011, 256,  32.00,""),
         new Book("Continuous Delivery",           "Jez Humble",        2010, 512,  44.99,""),
         new Book("Soft Skills",                   "John Sonmez",       2014, 504,  22.50,""),
-         new Book("how i made a billionar dollar bussines with my frineds jz(tuff",
+         new Book("how i made a billionar dollar bussines with my frineds jz(tuff)",
          "Zura joxiani",       2026, 100000, 1, "packha parliament night blue"),
          new Book("Belal as champion",           "WelterWeight",        2026, 1,  0,""),
     }; 
