@@ -11,7 +11,7 @@ using System.Linq;
 public class BookManagerService : IBookRepository
 {
     // Private list — encapsulated, not accessible directly from outside
-    private readonly List<Book> _books = new();
+    private readonly List<Book> books = new();
 
     /// <summary>
     /// Adds a new book to the collection.
@@ -23,14 +23,14 @@ public class BookManagerService : IBookRepository
             throw new ArgumentNullException(nameof(book));
 
         // Validation: no duplicate titles
-        bool exists = _books.Any(b => b.Title.Equals(book.Title, StringComparison.OrdinalIgnoreCase));
+        bool exists = books.Any(b => b.Title.Equals(book.Title, StringComparison.OrdinalIgnoreCase));
         if (exists)
         {
             Console.WriteLine($"  [!] A book with the title \"{book.Title}\" already exists.");
             return;
         }
 
-        _books.Add(book);
+        books.Add(book);
         Console.WriteLine($"  [+] Added: {book}");
     }
 
@@ -39,7 +39,7 @@ public class BookManagerService : IBookRepository
     /// </summary>
     public List<Book> GetAllBooks()
     {
-        return new List<Book>(_books);
+        return books;
     }
 
     /// <summary>
@@ -48,27 +48,27 @@ public class BookManagerService : IBookRepository
     /// </summary>
     public Book? FindByTitle(string title)
     {
-        return _books.FirstOrDefault(b => b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+        return books.FirstOrDefault(b => b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
     }
 
     public Book? FindByAuthor(string author)
     {
-        return _books.FirstOrDefault(a => a.Author.Equals(author, StringComparison.OrdinalIgnoreCase));
+        return books.FirstOrDefault(a => a.Author.Equals(author, StringComparison.OrdinalIgnoreCase));
     }
 
     public List<Book> SortByPages()
     {
-        return _books.OrderBy(b => b.Pages).ToList();
+        return books.OrderBy(b => b.Pages).ToList();
     }
 
     public List<Book> SortByPrice()
     {
-        return _books.OrderBy(b => b.Price).ToList();
+        return books.OrderBy(b => b.Price).ToList();
     }
 
     public List<Book> SortByYear()
     {
-        return _books.OrderBy(b => b.Year).ToList();
+        return books.OrderBy(b => b.Year).ToList();
     }
     /// <summary>
     /// Seeds the collection with 20 sample books for demonstration.
@@ -104,6 +104,6 @@ public class BookManagerService : IBookRepository
     }; 
 
         foreach (var book in books)
-            _books.Add(book);
+            this.books.Add(book);
     }
 }
