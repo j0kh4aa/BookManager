@@ -6,7 +6,9 @@
 /// </summary>
 public class EBook : Book
 {
-    public string DownloadUrl { get; set; }
+    public string DownloadUrl { get; set; } = "";
+
+    public EBook() { }
 
     public EBook(string title, string author, int year, int pages, double price, string downloadUrl, string cigar)
         : base(title, author, year, pages, price, cigar)
