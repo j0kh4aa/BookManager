@@ -129,12 +129,10 @@ public class BookConverter : JsonConverter<Book>
         using var doc = JsonDocument.ParseValue(ref reader);
         var root = doc.RootElement;
 
-        if (root.TryGetProperty("DownloadUrl", out _))
+        if (root.TryGetProperty("DownloadUrl", out var urlProp) && urlProp.GetString() != "")
             return JsonSerializer.Deserialize<EBook>(root.GetRawText());
 
-        return JsonSerializer.Deserialize<EBook>(root.GetRawText()) is EBook e && e.DownloadUrl != null
-            ? e
-            : JsonSerializer.Deserialize<Book>(root.GetRawText());
+        return JsonSerializer.Deserialize<Book>(root.GetRawText());
     }
 
     public override void Write(Utf8JsonWriter writer, Book value, JsonSerializerOptions options)
